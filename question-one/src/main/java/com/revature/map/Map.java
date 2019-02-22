@@ -15,6 +15,8 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 		DoubleWritable avg = new DoubleWritable();
 		
 		String header = value.toString();
+		String country = new String();
+		String item = new String();
 		header = header.replace(",", ", ");
 		String[] arr = header.split(",");
 		Double sum = 0.0;
@@ -22,8 +24,11 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 		for(String col: arr) {
 			System.out.println("col="+col);
 			System.out.println("arr length="+arr.length);
+			if(col == arr[0]) {
+				country = col;
+			}
 			if(col == arr[2]) {
-				word = new Text(col.trim());
+				item = col;
 			}
 			// 4 - 60 for years 
 			for(int i = 4; i < 6; i++) {
@@ -34,6 +39,7 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 				}
 			}
 			//sum /= arr.length - 4;
+			word = new Text(country.trim() + " " + item.trim());
 			avg = new DoubleWritable(sum);
 		}
 		context.write(word, avg);
