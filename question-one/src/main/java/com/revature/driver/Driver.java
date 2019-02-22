@@ -12,7 +12,7 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 import com.revature.map.Map;
-//import com.revature.reduce.Reduce;
+import com.revature.reduce.Reduce;
 
 public class Driver extends Configured implements Tool {
 
@@ -31,7 +31,7 @@ public class Driver extends Configured implements Tool {
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		
 		job.setMapperClass(Map.class);
-		//job.setReducerClass(Reduce.class);
+		job.setReducerClass(Reduce.class);
 
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
