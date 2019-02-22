@@ -25,9 +25,15 @@ public class Q1Test {
 	}
 	
 	@Test
-	public void testMapper() {
+	public void testSimpleMapper() {
 		mapDriver.withInput(new LongWritable(1), new Text("1,2,3,4,5.0,6.0"));
 		mapDriver.withOutput(new Text("3"), new DoubleWritable(11.0));
+		mapDriver.runTest();
+	}
+	@Test
+	public void testEmptyCommaMapper() {
+		mapDriver.withInput(new LongWritable(1), new Text("1,2,3,4,,"));
+		mapDriver.withOutput(new Text("3"), new DoubleWritable(0.0));
 		mapDriver.runTest();
 	}
 }

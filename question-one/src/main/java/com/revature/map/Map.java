@@ -15,16 +15,21 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 		DoubleWritable avg = new DoubleWritable();
 		
 		String header = value.toString();
+		header = header.replace(",", ", ");
 		String[] arr = header.split(",");
 		Double sum = 0.0;
 		
 		for(String col: arr) {
+			System.out.println("col="+col);
+			System.out.println("arr length="+arr.length);
 			if(col == arr[2]) {
-				word = new Text(col);
+				word = new Text(col.trim());
 			}
 			// 4 - 60 for years 
 			for(int i = 4; i < 6; i++) {
 				if (col == arr[i]) {
+					if (arr[i].equals(" "))
+						arr[i] = "0.0".trim();
 					sum += Double.parseDouble(arr[i]);
 				}
 			}
