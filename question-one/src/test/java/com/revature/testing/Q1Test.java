@@ -27,7 +27,7 @@ public class Q1Test {
 	@Test
 	public void testSimpleMapper() {
 		mapDriver.withInput(new LongWritable(1), new Text("1,2,3,4,5.0,6.0"));
-		mapDriver.withOutput(new Text("1 3"), new DoubleWritable(11.0));
+		mapDriver.withOutput(new Text("1 3"), new DoubleWritable(5.5));
 		mapDriver.runTest();
 	}
 	@Test

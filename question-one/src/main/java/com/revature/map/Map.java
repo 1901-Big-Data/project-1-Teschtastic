@@ -22,8 +22,6 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 		Double sum = 0.0;
 		
 		for(String col: arr) {
-			System.out.println("col="+col);
-			System.out.println("arr length="+arr.length);
 			if(col == arr[0]) {
 				country = col;
 			}
@@ -38,10 +36,10 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 					sum += Double.parseDouble(arr[i]);
 				}
 			}
-			//sum /= arr.length - 4;
-			word = new Text(country.trim() + " " + item.trim());
-			avg = new DoubleWritable(sum);
 		}
+		sum /= arr.length - 4;
+		word = new Text(country.trim() + " " + item.trim());
+		avg = new DoubleWritable(sum);
 		context.write(word, avg);
 	}
 }
