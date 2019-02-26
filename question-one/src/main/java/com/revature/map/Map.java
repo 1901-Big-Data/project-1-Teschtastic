@@ -38,9 +38,6 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 		
 		String[] data = line.split(",");
 		
-		for(String b: data)
-			System.out.println(b);
-		
 		for(String code: data) {
 			if(code == data[0])
 				country = code;

@@ -18,13 +18,6 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 		double count = 0.0;
 		double avg = 0.0;
 		
-		for(String code: desc) {
-			if(code == desc[0])
-				country = code;
-			else if(code == desc[2])
-				itemCode = code;
-		}
-		System.out.println(itemCode);
 
 		double num = 0.0;
 		for (DoubleWritable val: values) {
@@ -41,8 +34,18 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 		// women who have obtained a bachelor's degree as that is my
 		// definition for graduation. They have graduated primary,
 		// secondary, and tertiary.
-		if(itemCode.equals("SE.TER.CUAT.BA.FE.ZS")) {
-			context.write(new Text(country), new DoubleWritable(avg));
+
+		for(String code: desc) {
+			if(code.equals(desc[0]))
+				country = code;
+			else if(code.equals(desc[2]))
+				itemCode = code;
+			
+			//System.out.println(itemCode);
+			
+			if(itemCode.equals("SE.TER.CUAT.BA.FE.ZS")) {
+				context.write(new Text(country), new DoubleWritable(avg));
+			}
 		}
 	}
 }
