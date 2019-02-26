@@ -1,6 +1,7 @@
 package com.revature.map;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -8,45 +9,57 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
+	
+	static volatile private ArrayList<String> headers = new ArrayList<String>();
+	static volatile private String[] years = {"1960","1961","1962","1963","1964","1965","1966","1967","1968","1969","1970","1971","1972","1973","1974","1975","1976","1977","1978","1979","1980","1981","1982","1983","1984","1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016"};
+	
+	{
+	String[] input = {"Country Name","Country Code","Indicator Name","Indicator Code","1960","1961","1962","1963","1964","1965","1966","1967","1968","1969","1970","1971","1972","1973","1974","1975","1976","1977","1978","1979","1980","1981","1982","1983","1984","1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016"};	
+		
+		for(String header: input) {
+			headers.add(header);
+		}
+	}
+	
 	public void map(LongWritable key, Text value, Mapper<LongWritable, Text, Text, DoubleWritable>.Context context)
 			throws IOException, InterruptedException {
-
-		Text word = new Text();
-		DoubleWritable avg = new DoubleWritable();
 		
-		String header = value.toString();
+		String line = value.toString();
+		
+		if(line.contains("Country Name"))
+			return;
+		
 		String country = new String();
-		String item = new String();
-		header = header.replace(",", ", ");
-		String[] arr = header.split(",");
-		Double sum = 0.0;
-		int count = 0;
+		String countryCode = new String();
+		String itemCode = new String();
+		int yearLocation;
+		double gradRate;
 		
-		for(String col: arr) {
-			if(col == arr[1]) {
-				country = col;
-			}
-			if(col == arr[3]) {
-				item = col;
-			}
-			// 4 - 60 for years 
-			for(int i = 4; i < 6; i++) {
-				if (col == arr[i]) {
-					if(arr[i].equals(" "))
-						arr[i] = "0.0".trim();
-					if(!arr[i].equals("0.0"))
-						count++;
-					sum += Double.parseDouble(arr[i]);
-				}
-			}
+		String[] data = line.split(",");
+		
+		for(String code: data) {
+			if(code == data[0])
+				country = code;
+			else if(code == data[1])
+				countryCode = code;
+			else if(code == data[3])
+				itemCode = code;
 		}
 		
-		if(count == 0)
-			count = 1;
-		
-		sum /= count;
-		word = new Text(country.trim() + " " + item.trim());
-		avg = new DoubleWritable(sum);
-		context.write(word, avg);
+		for(String year: years) {
+			try {
+				yearLocation = headers.indexOf(year);
+				
+				if (yearLocation >= data.length)
+					return;
+				
+				gradRate = Double.parseDouble(data[yearLocation]);
+				
+				if (gradRate > 0.0)
+					context.write(new Text(country+","+countryCode+","+itemCode), new DoubleWritable(gradRate));
+			} catch(NumberFormatException e) {
+				
+			}
+		}
 	}
 }

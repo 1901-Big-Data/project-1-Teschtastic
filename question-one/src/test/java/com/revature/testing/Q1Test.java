@@ -34,20 +34,19 @@ public class Q1Test {
 		mapReduceDriver = new MapReduceDriver<LongWritable, Text, Text, DoubleWritable, Text, DoubleWritable>();
 		mapReduceDriver.setMapper(mapper);
 		mapReduceDriver.setReducer(reducer);
-
 	}
 	
 	@Test
 	public void testSimpleMapper() {
 		mapDriver.withInput(new LongWritable(1), new Text("1,2,3,4,5.0,6.0"));
-		mapDriver.withOutput(new Text("2 4"), new DoubleWritable(5.5));
+		mapDriver.withOutput(new Text("1,2,4"), new DoubleWritable(5.0));
+		mapDriver.withOutput(new Text("1,2,4"), new DoubleWritable(6.0));
 		mapDriver.runTest();
 	}
 	
 	@Test
 	public void testEmptyCommaMapper() {
 		mapDriver.withInput(new LongWritable(1), new Text("1,2,3,4,,"));
-		mapDriver.withOutput(new Text("2 4"), new DoubleWritable(0.0));
 		mapDriver.runTest();
 	}
 	
@@ -56,9 +55,19 @@ public class Q1Test {
 		List<DoubleWritable> list = new ArrayList<DoubleWritable>();
 		list.add(new DoubleWritable(25.0));
 		
-		reduceDriver.withInput(new Text("ABC SE.TER.CUAT.BA.FE.ZS"), list);
-		reduceDriver.withOutput(new Text("ABC"), new DoubleWritable(25.0));
+		reduceDriver.withInput(new Text("Arab World,ARB,SE.TER.CUAT.BA.FE.ZS"), list);
+		reduceDriver.withOutput(new Text("Arab World"), new DoubleWritable(25.0));
 		reduceDriver.runTest();
 	}
 	
+	@Test
+	public void testMultipleReducer() {
+		List<DoubleWritable> list = new ArrayList<DoubleWritable>();
+		list.add(new DoubleWritable(25.0));
+		list.add(new DoubleWritable(25.0));
+		
+		reduceDriver.withInput(new Text("Arab World,ARB,SE.TER.CUAT.BA.FE.ZS"), list);
+		reduceDriver.withOutput(new Text("Arab World"), new DoubleWritable(25.0));
+		reduceDriver.runTest();
+	}
 }
