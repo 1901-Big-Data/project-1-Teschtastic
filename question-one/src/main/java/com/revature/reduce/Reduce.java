@@ -18,7 +18,6 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 		double count = 0.0;
 		double avg = 0.0;
 		
-		
 		for(String code: desc) {
 			if(code == desc[0])
 				country = code;
@@ -30,7 +29,6 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 		for (DoubleWritable val: values) {
 			num += val.get();
 			count++;
-			System.out.println(num);
 		}
 		
 		if(count < 1.0)
@@ -38,6 +36,10 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 		
 		avg = num / count;
 		
+		// Only writes to the file if the item code matches the on for 
+		// women who have obtained a bachelor's degree as that is my
+		// definition for graduation. They have graduated primary,
+		// secondary, and tertiary.
 		if(itemCode.equals("SE.TER.CUAT.BA.FE.ZS")) {
 			context.write(new Text(country), new DoubleWritable(avg));
 		}
