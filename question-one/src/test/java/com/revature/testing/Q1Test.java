@@ -82,10 +82,10 @@ public class Q1Test {
 	
 	@Test
 	public void testRealMapReducer() {
-		String in = "Arab World,ARB,Educational attainment, at least Bachelor's or equivalent, population 25+, female (%) (cumulative),SE.TER.CUAT.BA.FE.ZS,12.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,";
+		String in = "Arab World,ARB,Educational attainment, at least Bachelor's or equivalent, population 25+, female (%) (cumulative),SE.TER.CUAT.BA.FE.ZS,12.0,14.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,";
 		
 		mapReduceDriver.addInput(new LongWritable(0), new Text(in));
-		mapReduceDriver.addOutput(new Text("Arab World"), new DoubleWritable(12.0));
+		mapReduceDriver.addOutput(new Text("Arab World"), new DoubleWritable(13.0));
 		mapReduceDriver.runTest();
 	}
 }
