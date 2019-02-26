@@ -24,6 +24,7 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 			else if(code == desc[2])
 				itemCode = code;
 		}
+		System.out.println(itemCode);
 
 		double num = 0.0;
 		for (DoubleWritable val: values) {

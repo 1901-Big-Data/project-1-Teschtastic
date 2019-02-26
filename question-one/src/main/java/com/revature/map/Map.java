@@ -25,6 +25,7 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 			throws IOException, InterruptedException {
 		
 		String line = value.toString();
+		line = line.replace(", ", " ");
 		
 		if(line.contains("Country Name"))
 			return;
@@ -36,6 +37,9 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 		double gradRate;
 		
 		String[] data = line.split(",");
+		
+		for(String b: data)
+			System.out.println(b);
 		
 		for(String code: data) {
 			if(code == data[0])

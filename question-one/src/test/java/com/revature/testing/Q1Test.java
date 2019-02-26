@@ -73,7 +73,7 @@ public class Q1Test {
 
 	@Test
 	public void testMapReduce() {
-		String input = "Arab World,stuff,ARB,SE.TER.CUAT.BA.FE.ZS,12.0,14.0";
+		String input = "Arab World,stuff, and thing,ARB,SE.TER.CUAT.BA.FE.ZS,12.0,14.0";
 		mapReduceDriver.addInput(new LongWritable(0), new Text(input));
 		mapReduceDriver.addOutput(new Text("Arab World"), new DoubleWritable(13.0));
 		

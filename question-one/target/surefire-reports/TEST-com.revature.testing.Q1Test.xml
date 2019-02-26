@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="com.revature.testing.Q1Test" time="1.116" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="com.revature.testing.Q1Test" time="1.873" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="java.vm.version" value="11.0.1+13-LTS"/>
-    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib"/>
+    <property name="java.vm.version" value="11.0.2+9-LTS"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib"/>
     <property name="gopherProxySet" value="false"/>
     <property name="maven.multiModuleProjectDirectory" value="/Users/Teschtastic/Projects/Revature/Hadoop/project-one/question-one"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
@@ -17,7 +17,7 @@
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/Users/Teschtastic/Projects/Revature/Hadoop/project-one/question-one"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
-    <property name="java.runtime.version" value="11.0.1+13-LTS"/>
+    <property name="java.runtime.version" value="11.0.2+9-LTS"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
     <property name="os.arch" value="x86_64"/>
     <property name="java.io.tmpdir" value="/var/folders/m_/r0pg0lj10vb9wbtccd_4nckr0000gn/T/"/>
@@ -45,17 +45,17 @@
     <property name="java.class.path" value="/usr/local/Cellar/maven/3.6.0/libexec/boot/plexus-classworlds-2.5.2.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
-    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.version" value="11.0.1"/>
+    <property name="java.version" value="11.0.2"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="maven.home" value="/usr/local/Cellar/maven/3.6.0/libexec"/>
     <property name="file.separator" value="/"/>
-    <property name="java.version.date" value="2018-10-16"/>
+    <property name="java.version.date" value="2019-01-15"/>
     <property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/>
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -64,6 +64,9 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.revature.testing.Q1Test" name="testSimpleMapper" time="1.081"/>
-  <testcase classname="com.revature.testing.Q1Test" name="testEmptyCommaMapper" time="0.035"/>
+  <testcase classname="com.revature.testing.Q1Test" name="testMultipleReducer" time="1.74"/>
+  <testcase classname="com.revature.testing.Q1Test" name="testSimpleMapper" time="0.058"/>
+  <testcase classname="com.revature.testing.Q1Test" name="testSimpleReducer" time="0.03"/>
+  <testcase classname="com.revature.testing.Q1Test" name="testMapReduce" time="0.038"/>
+  <testcase classname="com.revature.testing.Q1Test" name="testEmptyCommaMapper" time="0.007"/>
 </testsuite>
