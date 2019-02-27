@@ -16,8 +16,9 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 		String countryCode = new String();
 		String itemCode = new String();
 		double max = 0.0;
-		double min = 101.0;
-		double increase;
+		double min = 500.0;
+		double increase = 0.0;
+		double count = 0.0;
 		
 		for(String code: desc) {
 			if(code.equals(desc[0]))
@@ -33,9 +34,14 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 				max = val.get();
 			if(val.get() < min || val.get() < max)
 				min = val.get();
+			count++;
 		}
 		
+		if(count == 0.0)
+			count = 1.0;
+		
 		increase = max - min;
+		increase /= count;
 		
 		if(countryCode.equals("USA")) {
 			switch(itemCode) {
