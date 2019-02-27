@@ -18,7 +18,7 @@ public class Driver extends Configured implements Tool {
 
 	public int run(String[] args) throws Exception {
 		if(args.length != 2) {
-			System.out.printf("Usage: WordCount <input dir> <output dir>\n");
+			System.out.printf("Usage: Q2 <input dir> <output dir>\n");
 			System.exit(-1);
 		}
 		
