@@ -70,6 +70,16 @@ public class Q1Test {
 		reduceDriver.withOutput(new Text("Arab World"), new DoubleWritable(25.0));
 		reduceDriver.runTest();
 	}
+	
+	@Test
+	public void testMultipleReducerLarge() {
+		List<DoubleWritable> list = new ArrayList<DoubleWritable>();
+		list.add(new DoubleWritable(31.0));
+		list.add(new DoubleWritable(33.0));
+		
+		reduceDriver.withInput(new Text("Arab World,ARB,SE.TER.CUAT.BA.FE.ZS"), list);
+		reduceDriver.runTest();
+	}
 
 	@Test
 	public void testMapReduce() {
@@ -86,6 +96,14 @@ public class Q1Test {
 		
 		mapReduceDriver.addInput(new LongWritable(0), new Text(in));
 		mapReduceDriver.addOutput(new Text("Arab World"), new DoubleWritable(13.0));
+		mapReduceDriver.runTest();
+	}
+	
+	@Test
+	public void testRealMapReducerLarge() {
+		String in = "Arab World,ARB,Educational attainment, at least Bachelor's or equivalent, population 25+, female (%) (cumulative),SE.TER.CUAT.BA.FE.ZS,31.0,33.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,";
+		
+		mapReduceDriver.addInput(new LongWritable(0), new Text(in));
 		mapReduceDriver.runTest();
 	}
 }

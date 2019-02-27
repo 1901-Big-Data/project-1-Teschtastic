@@ -40,7 +40,7 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 		// women who have obtained a bachelor's degree as that is my
 		// definition for graduation. They have graduated primary,
 		// secondary, and tertiary.	
-		if(itemCode.equals("SE.TER.CUAT.BA.FE.ZS")) {
+		if(itemCode.equals("SE.TER.CUAT.BA.FE.ZS") && avg < 30.0) {
 			context.write(new Text(country), new DoubleWritable(avg));
 		}
 	}
