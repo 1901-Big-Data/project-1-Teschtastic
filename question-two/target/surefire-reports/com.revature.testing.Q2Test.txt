@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.revature.testing.Q1Test
+Test set: com.revature.testing.Q2Test
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.593 sec
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.82 sec

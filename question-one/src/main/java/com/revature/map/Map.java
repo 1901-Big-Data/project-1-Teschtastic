@@ -25,7 +25,8 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 			throws IOException, InterruptedException {
 		
 		String line = value.toString();
-		line = line.replace(", ", " ");
+		line = line.replace(", ", "");
+		line = line.replace("\"", "");
 		
 		if(line.contains("Country Name"))
 			return;
@@ -34,7 +35,7 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 		String countryCode = new String();
 		String itemCode = new String();
 		int yearLocation;
-		double gradRate;
+		double rate;
 		
 		String[] data = line.split(",");
 		
@@ -54,10 +55,10 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 				if (yearLocation >= data.length)
 					return;
 				
-				gradRate = Double.parseDouble(data[yearLocation]);
-				
-				if (gradRate > 0.0)
-					context.write(new Text(country+","+countryCode+","+itemCode), new DoubleWritable(gradRate));
+				rate = Double.parseDouble(data[yearLocation]);
+
+				if (rate > 0.0)
+					context.write(new Text(country+","+countryCode+","+itemCode), new DoubleWritable(rate));
 			} catch(NumberFormatException e) {
 				
 			}

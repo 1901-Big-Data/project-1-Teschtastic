@@ -41,7 +41,7 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 			count = 1.0;
 		
 		increase = max - min;
-		increase /= count;
+		//increase /= count;
 		
 		if(countryCode.equals("USA")) {
 			switch(itemCode) {

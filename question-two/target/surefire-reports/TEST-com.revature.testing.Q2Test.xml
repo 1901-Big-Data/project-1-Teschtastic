@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="com.revature.testing.Q1Test" time="1.438" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="com.revature.testing.Q2Test" time="1.702" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="11.0.2+9-LTS"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib"/>
     <property name="gopherProxySet" value="false"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/Teschtastic/Projects/Revature/Hadoop/project-one/question-one"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/Teschtastic/Projects/Revature/Hadoop/project-one/question-two"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/Teschtastic/Projects/Revature/Hadoop/project-one/question-one"/>
+    <property name="user.dir" value="/Users/Teschtastic/Projects/Revature/Hadoop/project-one/question-two"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="java.runtime.version" value="11.0.2+9-LTS"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
@@ -64,12 +64,10 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.revature.testing.Q1Test" name="testRealMapReducerLarge" time="1.245"/>
-  <testcase classname="com.revature.testing.Q1Test" name="testMultipleReducer" time="0.03"/>
-  <testcase classname="com.revature.testing.Q1Test" name="testRealMapReducer" time="0.036"/>
-  <testcase classname="com.revature.testing.Q1Test" name="testSimpleMapper" time="0.03"/>
-  <testcase classname="com.revature.testing.Q1Test" name="testMultipleReducerLarge" time="0.034"/>
-  <testcase classname="com.revature.testing.Q1Test" name="testSimpleReducer" time="0.023"/>
-  <testcase classname="com.revature.testing.Q1Test" name="testMapReduce" time="0.03"/>
-  <testcase classname="com.revature.testing.Q1Test" name="testEmptyCommaMapper" time="0.01"/>
+  <testcase classname="com.revature.testing.Q2Test" name="testRealMapReducerLarge" time="1.56"/>
+  <testcase classname="com.revature.testing.Q2Test" name="testMultipleReducer" time="0.028"/>
+  <testcase classname="com.revature.testing.Q2Test" name="testSimpleMapper" time="0.032"/>
+  <testcase classname="com.revature.testing.Q2Test" name="testSimpleReducer" time="0.031"/>
+  <testcase classname="com.revature.testing.Q2Test" name="testMapReduce" time="0.041"/>
+  <testcase classname="com.revature.testing.Q2Test" name="testEmptyCommaMapper" time="0.01"/>
 </testsuite>

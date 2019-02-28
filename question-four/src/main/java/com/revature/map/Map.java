@@ -23,7 +23,8 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 	public void map(LongWritable key, Text value, Mapper<LongWritable, Text, Text, DoubleWritable>.Context context)
 			throws IOException, InterruptedException {
 		String line = value.toString();
-		line = line.replace(", ", " ");
+		line = line.replace(", ", "");
+		line = line.replace("\"", "");
 		
 		if(line.contains("Country Name"))
 			return;
