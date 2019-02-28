@@ -55,8 +55,8 @@ public class Q1Test {
 		List<DoubleWritable> list = new ArrayList<DoubleWritable>();
 		list.add(new DoubleWritable(25.0));
 		
-		reduceDriver.withInput(new Text("Arab World,ARB,SE.TER.CUAT.BA.FE.ZS"), list);
-		reduceDriver.withOutput(new Text("Arab World"), new DoubleWritable(25.0));
+		reduceDriver.withInput(new Text("Arab World,stuff,SE.TER.HIAT.BA.FE.ZS"), list);
+		reduceDriver.withOutput(new Text("Arab World Bachelor's"), new DoubleWritable(25.0));
 		reduceDriver.runTest();
 	}
 	
@@ -66,8 +66,8 @@ public class Q1Test {
 		list.add(new DoubleWritable(25.0));
 		list.add(new DoubleWritable(25.0));
 		
-		reduceDriver.withInput(new Text("Arab World,ARB,SE.TER.CUAT.BA.FE.ZS"), list);
-		reduceDriver.withOutput(new Text("Arab World"), new DoubleWritable(25.0));
+		reduceDriver.withInput(new Text("Arab World,stuff,SE.TER.HIAT.BA.FE.ZS"), list);
+		reduceDriver.withOutput(new Text("Arab World Bachelor's"), new DoubleWritable(25.0));
 		reduceDriver.runTest();
 	}
 	
@@ -77,31 +77,31 @@ public class Q1Test {
 		list.add(new DoubleWritable(31.0));
 		list.add(new DoubleWritable(33.0));
 		
-		reduceDriver.withInput(new Text("Arab World,ARB,SE.TER.CUAT.BA.FE.ZS"), list);
+		reduceDriver.withInput(new Text("Arab World,ARB,SE.TER.HIAT.BA.FE.ZS"), list);
 		reduceDriver.runTest();
 	}
 
 	@Test
 	public void testMapReduce() {
-		String input = "Arab World,stuff, and thing,ARB,SE.TER.CUAT.BA.FE.ZS,12.0,14.0";
+		String input = "Arab World,stuff, and thing,ARB,SE.TER.HIAT.BA.FE.ZS,12.0,14.0";
 		mapReduceDriver.addInput(new LongWritable(0), new Text(input));
-		mapReduceDriver.addOutput(new Text("Arab World"), new DoubleWritable(13.0));
+		mapReduceDriver.addOutput(new Text("Arab World Bachelor's"), new DoubleWritable(13.0));
 		
 		mapReduceDriver.runTest();
 	}
 	
 	@Test
 	public void testRealMapReducer() {
-		String in = "Arab World,ARB,Educational attainment, at least Bachelor's or equivalent, population 25+, female (%) (cumulative),SE.TER.CUAT.BA.FE.ZS,12.0,14.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,";
+		String in = "Arab World,ARB,Educational attainment, completed Bachelor's or equivalent, population 25+ years, female (%),SE.TER.HIAT.BA.FE.ZS,12.0,14.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,";
 		
 		mapReduceDriver.addInput(new LongWritable(0), new Text(in));
-		mapReduceDriver.addOutput(new Text("Arab World"), new DoubleWritable(13.0));
+		mapReduceDriver.addOutput(new Text("Arab World Bachelor's"), new DoubleWritable(13.0));
 		mapReduceDriver.runTest();
 	}
 	
 	@Test
 	public void testRealMapReducerLarge() {
-		String in = "Arab World,ARB,Educational attainment, at least Bachelor's or equivalent, population 25+, female (%) (cumulative),SE.TER.CUAT.BA.FE.ZS,31.0,33.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,";
+		String in = "Arab World,Educational attainment, completed Bachelor's or equivalent, population 25+ years, female (%),SE.TER.HIAT.BA.FE.ZS,31.0,33.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,";
 		
 		mapReduceDriver.addInput(new LongWritable(0), new Text(in));
 		mapReduceDriver.runTest();

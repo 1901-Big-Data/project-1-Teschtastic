@@ -40,8 +40,23 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 		// women who have obtained a bachelor's degree as that is my
 		// definition for graduation. They have graduated primary,
 		// secondary, and tertiary.	
-		if(itemCode.equals("SE.TER.CUAT.BA.FE.ZS") && avg < 30.0) {
-			context.write(new Text(country), new DoubleWritable(avg));
+		if(itemCode.equals("SE.TER.HIAT.BA.FE.ZS") && avg < 30.0) {
+			context.write(new Text(country+" Bachelor's"), new DoubleWritable(avg));
+		}
+		if(itemCode.equals("SE.TER.HIAT.DO.FE.ZS") && avg < 30.0) {
+			context.write(new Text(country+" Doctorate"), new DoubleWritable(avg));
+		}
+		if(itemCode.equals("SE.TER.HIAT.MA.FE.ZS") && avg < 30.0) {
+			context.write(new Text(country+" Master's"), new DoubleWritable(avg));
+		}
+		if(itemCode.equals("SE.PRM.HIAT.FE.ZS") && avg < 30.0) {
+			context.write(new Text(country+" Primary"), new DoubleWritable(avg));
+		}
+		if(itemCode.equals("SE.SEC.HIAT.UP.FE.ZS") && avg < 30.0) {
+			context.write(new Text(country+" Secondary"), new DoubleWritable(avg));
+		}
+		if(itemCode.equals("SE.SEC.HIAT.PO.FE.ZS") && avg < 30.0) {
+			context.write(new Text(country+" Post-secondary"), new DoubleWritable(avg));
 		}
 	}
 }

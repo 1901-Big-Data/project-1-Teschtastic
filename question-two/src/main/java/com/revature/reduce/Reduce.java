@@ -15,10 +15,11 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 		String country = new String();
 		String countryCode = new String();
 		String itemCode = new String();
-		double max = 0.0;
-		double min = 500.0;
+		double oldVal = 0.0;
+		double newVal = 0.0;
 		double increase = 0.0;
-		double count = 0.0;
+		double perIncrease = 0.0;
+		
 		
 		for(String code: desc) {
 			if(code.equals(desc[0]))
@@ -30,36 +31,34 @@ public class Reduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> 
 		}
 		
 		for (DoubleWritable val: values) {
-			if(val.get() > max)
-				max = val.get();
-			if(val.get() < min || val.get() < max)
-				min = val.get();
-			count++;
-		}
+			newVal = val.get();
+			
+			//{[(V2-V1)/V1]/(time)} * 100.
 		
-		if(count == 0.0)
-			count = 1.0;
+			if(oldVal != 0.0 ) {
+				increase = newVal - oldVal;
+				perIncrease = (increase / oldVal) * 100.0;
 		
-		increase = max - min;
-		//increase /= count;
-		
-		if(countryCode.equals("USA")) {
-			switch(itemCode) {
-				// gross primary school enrollment female
-				case "SE.PRM.ENRR.FE":
-					context.write(new Text(country+","+itemCode), new DoubleWritable(increase));
-					break;
-				// gross secondary school enrollment female
-				case "SE.SEC.ENRR.FE":
-					context.write(new Text(country+","+itemCode), new DoubleWritable(increase));
-					break;
-				// gross tertiary school enrollment female
-				case "SE.TER.ENRR.FE":
-					context.write(new Text(country+","+itemCode), new DoubleWritable(increase));
-					break;
-				default:
-					break;
+				if(countryCode.equals("USA")) {
+					switch(itemCode) {
+						// gross primary school enrollment female
+						case "SE.PRM.ENRR.FE":
+							context.write(new Text(country+" primary"), new DoubleWritable(perIncrease));
+							break;
+							// gross secondary school enrollment female
+						case "SE.SEC.ENRR.FE":
+							context.write(new Text(country+" secondary"), new DoubleWritable(perIncrease));
+							break;
+							// gross tertiary school enrollment female
+						case "SE.TER.ENRR.FE":
+							context.write(new Text(country+" tertiary"), new DoubleWritable(perIncrease));
+							break;
+						default:
+							break;
+					}
+				}
 			}
+			oldVal = newVal;
 		}
 	}
 }
