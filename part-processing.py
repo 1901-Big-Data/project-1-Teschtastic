@@ -39,8 +39,8 @@ def processPartQ3():
                 d[typ].append(val)
             else:
                 d[typ] = [val]
-        for keys in d.keys():
-            out.write(keys + " " + str(d.values()) + "\n")
+        for typ, val in d.items():
+            out.write('{}\t{}\n'.format(typ, val))
 
 def processPartQ4():
     d = dict()
@@ -53,8 +53,8 @@ def processPartQ4():
                 d[typ].append(val)
             else:
                 d[typ] = [val]
-        for keys in d.keys():
-            out.write(keys + " " + str(d.values()) + "\n")
+        for typ, val in d.items():
+            out.write('{}\t{}\n'.format(typ, val))
 
 if __name__ == "__main__":
     main()
