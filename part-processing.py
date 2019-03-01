@@ -12,7 +12,7 @@ def processPartQ1():
     with open("part-r-00000-Q1", "r") as file:
         for line in file:
             typ, val = line.split(":")
-            out.write(typ + " " + val)
+            out.write(typ + "\t\t" + val)
 
 def processPartQ2():
     d = dict()
