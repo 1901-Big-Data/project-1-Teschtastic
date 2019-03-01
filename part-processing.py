@@ -21,11 +21,13 @@ def processPartQ2():
         for line in file:
             typ, val = line.split("\t")
             val = str(val).strip("\n")
-            val = str(val).strip("\'")
             if typ in d:
                 d[typ].append(float(val))
             else:
                 d[typ] = [float(val)]
+                
+        for typ, val in d.items():
+            out.write('{}\t{}\n'.format(typ, val))
 
         lists1 = d.get("United States primary")
         lists2 = d.get("United States secondary")
@@ -33,24 +35,21 @@ def processPartQ2():
 
         plt.plot(range(2000, 2015), lists1, "r--")
         plt.title("United States primary")
-        plt.xlabel("Change over the years")
+        plt.xlabel("Year")
         plt.ylabel("Percent change")
         plt.show()
 
         plt.plot(range(2000, 2014), lists2, "r--")
         plt.title("United States secondary")
-        plt.xlabel("Change over the years")
+        plt.xlabel("Year")
         plt.ylabel("Percent change")
         plt.show()
 
         plt.plot(range(2000, 2015), lists3, "r--")
         plt.title("United States tertiary")
-        plt.xlabel("Change over the years")
+        plt.xlabel("Year")
         plt.ylabel("Percent change")
         plt.show()
-
-        for typ, val in d.items():
-            out.write('{}\t{}\n'.format(typ, val))
 
 def processPartQ3():
     d = dict()
@@ -60,9 +59,9 @@ def processPartQ3():
             typ, val = line.split("\t")
             val = str(val).strip("\n")
             if typ in d:
-                d[typ].append(val)
+                d[typ].append(float(val))
             else:
-                d[typ] = [val]
+                d[typ] = [float(val)]
         for typ, val in d.items():
             out.write('{}\t{}\n'.format(typ, val))
 
@@ -74,9 +73,9 @@ def processPartQ4():
             typ, val = line.split("\t")
             val = str(val).strip("\n")
             if typ in d:
-                d[typ].append(val)
+                d[typ].append(float(val))
             else:
-                d[typ] = [val]
+                d[typ] = [float(val)]
         for typ, val in d.items():
             out.write('{}\t{}\n'.format(typ, val))
 
