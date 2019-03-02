@@ -1,18 +1,28 @@
 #!/usr/local/bin/python3
 from matplotlib import pyplot as plt
+import array
 
 def main():
     processPartQ1()
-    processPartQ2()
-    processPartQ3()
-    processPartQ4()
+    #processPartQ2()
+    #processPartQ3()
+    #processPartQ4()
 
 def processPartQ1():
+    list1 = list()
+    list2 = list()
     out = open("output-Q1", "w")
     with open("part-r-00000-Q1", "r") as file:
         for line in file:
             typ, val = line.split(":")
-            out.write(typ + "\t\t" + val)
+            val = str(val).strip("\t \n")
+            out.write(typ + "\t" + val)
+            list1.append(typ)
+            list2.append(float(val))
+        #print(list1)
+        #print(list2)
+        plt.bar(list1, list2)
+        plt.show()
 
 def processPartQ2():
     d = dict()
