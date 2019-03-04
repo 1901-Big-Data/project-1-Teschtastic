@@ -5,10 +5,11 @@ import random
 from random import randrange
 
 def main():
-    processPartQ1()
-    processPartQ2()
-    processPartQ3()
-    processPartQ4()
+    #processPartQ1()
+    #processPartQ2()
+    #processPartQ3()
+    #processPartQ4()
+    processPartQ5()
 
 def processPartQ1():
     list1 = list()
@@ -29,7 +30,7 @@ def processPartQ1():
             list4.append(list2[rand_ind])
 
         plt.bar(list3, list4)
-        plt.xticks(range(20), list3, rotation='45')
+        plt.xticks(range(20), list3, rotation='65')
         plt.margins(0.05)
         plt.subplots_adjust(bottom=0.15)
         plt.show()
@@ -146,6 +147,30 @@ def processPartQ4():
     plt.margins(0.05)
     plt.subplots_adjust(bottom=0.15)
     plt.show()
+
+def processPartQ5():
+    list1 = list()
+    list2 = list()
+    list3 = list()
+    list4 = list()
+    out = open("output-Q5", "w")
+    with open("part-r-00000-Q5", "r") as file:
+        for line in file:
+            typ, val = line.split("\t")
+            val = str(val).strip("\t \n")
+            out.write(typ + "\t" + val + "\n")
+            list1.append(typ)
+            list2.append(float(val))
+        for x in range(20):
+            rand_ind = randrange(len(list1))
+            list3.append(list1[rand_ind])
+            list4.append(list2[rand_ind])
+
+        plt.bar(list3, list4)
+        plt.xticks(range(20), list3, rotation='65')
+        plt.margins(0.05)
+        plt.subplots_adjust(bottom=0.15)
+        plt.show()
 
 if __name__ == "__main__":
     main()

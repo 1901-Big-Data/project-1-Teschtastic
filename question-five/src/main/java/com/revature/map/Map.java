@@ -31,7 +31,6 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 			return;
 		
 		String country = new String();
-		String countryCode = new String();
 		String itemCode = new String();
 		int yearLocation;
 		double gradRate;
@@ -40,8 +39,6 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 		for(String code: data) {
 			if(code == data[0])
 				country = code;
-			else if(code == data[1])
-				countryCode = code;
 			else if(code == data[3])
 				itemCode = code;
 		}
@@ -56,7 +53,7 @@ public class Map extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 				gradRate = Double.parseDouble(data[yearLocation]);
 				
 				if (gradRate > 0.0)
-					context.write(new Text(country+","+countryCode+","+itemCode), new DoubleWritable(gradRate));
+					context.write(new Text(country+","+itemCode), new DoubleWritable(gradRate));
 			} catch(NumberFormatException e) {
 				
 			}
