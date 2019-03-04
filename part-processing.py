@@ -1,27 +1,37 @@
 #!/usr/local/bin/python3
 from matplotlib import pyplot as plt
 import array
+import random
+from random import randrange
 
 def main():
     processPartQ1()
-    #processPartQ2()
-    #processPartQ3()
-    #processPartQ4()
+    processPartQ2()
+    processPartQ3()
+    processPartQ4()
 
 def processPartQ1():
     list1 = list()
     list2 = list()
+    list3 = list()
+    list4 = list()
     out = open("output-Q1", "w")
     with open("part-r-00000-Q1", "r") as file:
         for line in file:
             typ, val = line.split(":")
             val = str(val).strip("\t \n")
-            out.write(typ + "\t" + val)
+            out.write(typ + "\t" + val + "\n")
             list1.append(typ)
             list2.append(float(val))
-        #print(list1)
-        #print(list2)
-        plt.bar(list1, list2)
+        for x in range(20):
+            rand_ind = randrange(len(list1))
+            list3.append(list1[rand_ind])
+            list4.append(list2[rand_ind])
+
+        plt.bar(list3, list4)
+        plt.xticks(range(20), list3, rotation='45')
+        plt.margins(0.05)
+        plt.subplots_adjust(bottom=0.15)
         plt.show()
 
 def processPartQ2():
@@ -63,6 +73,10 @@ def processPartQ2():
 
 def processPartQ3():
     d = dict()
+    list1 = list()
+    list2 = list()
+    list3 = list()
+    list4 = list()
     out = open("output-Q3", "w")
     with open("part-r-00000-Q3", "r") as file:
         for line in file:
@@ -72,11 +86,35 @@ def processPartQ3():
                 d[typ].append(float(val))
             else:
                 d[typ] = [float(val)]
-        for typ, val in d.items():
-            out.write('{}\t{}\n'.format(typ, val))
+
+    for typ, val in d.items():
+        out.write('{}\t{}\n'.format(typ, val))
+        first = val[0]
+        last = val[-1]
+        list1.append(typ)
+        if first != 0:
+            avg = ((last-first)/first)*100
+            list2.append(avg)
+        else:
+            avg = 0
+            list2.append(avg)
+    for x in range(20):
+        rand_ind = randrange(len(list1))
+        list3.append(list1[rand_ind])
+        list4.append(list2[rand_ind])
+
+    plt.bar(list3, list4)
+    plt.xticks(range(20), list3, rotation='65')
+    plt.margins(0.05)
+    plt.subplots_adjust(bottom=0.15)
+    plt.show()
 
 def processPartQ4():
     d = dict()
+    list1 = list()
+    list2 = list()
+    list3 = list()
+    list4 = list()
     out = open("output-Q4", "w")
     with open("part-r-00000-Q4", "r") as file:
         for line in file:
@@ -86,8 +124,28 @@ def processPartQ4():
                 d[typ].append(float(val))
             else:
                 d[typ] = [float(val)]
-        for typ, val in d.items():
-            out.write('{}\t{}\n'.format(typ, val))
+
+    for typ, val in d.items():
+        out.write('{}\t{}\n'.format(typ, val))
+        first = val[0]
+        last = val[-1]
+        list1.append(typ)
+        if first != 0:
+            avg = ((last-first)/first)*100
+            list2.append(avg)
+        else:
+            avg = 0
+            list2.append(avg)
+    for x in range(20):
+        rand_ind = randrange(len(list1))
+        list3.append(list1[rand_ind])
+        list4.append(list2[rand_ind])
+        
+    plt.bar(list3, list4)
+    plt.xticks(range(20), list3, rotation='65')
+    plt.margins(0.05)
+    plt.subplots_adjust(bottom=0.15)
+    plt.show()
 
 if __name__ == "__main__":
     main()
