@@ -21,8 +21,8 @@ public class Driver extends Configured implements Tool {
 			System.out.printf("Usage: WordCount <input dir> <output dir>\n");
 			System.exit(-1);
 		}
-		
-		Job job = new Job();
+
+		Job job = new Job(getConf());
 		
 		job.setJarByClass(Driver.class);
 		job.setJobName("Q5");
