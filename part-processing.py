@@ -5,10 +5,10 @@ import random
 from random import randrange
 
 def main():
-    #processPartQ1()
-    #processPartQ2()
-    #processPartQ3()
-    #processPartQ4()
+    processPartQ1()
+    processPartQ2()
+    processPartQ3()
+    processPartQ4()
     processPartQ5()
 
 def processPartQ1():
@@ -16,8 +16,8 @@ def processPartQ1():
     list2 = list()
     list3 = list()
     list4 = list()
-    out = open("output-Q1", "w")
-    with open("part-r-00000-Q1", "r") as file:
+    out = open("Outputs/output-Q1", "w")
+    with open("Parts/part-r-00000-Q1", "r") as file:
         for line in file:
             typ, val = line.split(":")
             val = str(val).strip("\t \n")
@@ -37,8 +37,8 @@ def processPartQ1():
 
 def processPartQ2():
     d = dict()
-    out = open("output-Q2", "w")
-    with open("part-r-00000-Q2", "r") as file:
+    out = open("Outputs/output-Q2", "w")
+    with open("Parts/part-r-00000-Q2", "r") as file:
         for line in file:
             typ, val = line.split("\t")
             val = str(val).strip("\n")
@@ -78,8 +78,8 @@ def processPartQ3():
     list2 = list()
     list3 = list()
     list4 = list()
-    out = open("output-Q3", "w")
-    with open("part-r-00000-Q3", "r") as file:
+    out = open("Outputs/output-Q3", "w")
+    with open("Parts/part-r-00000-Q3", "r") as file:
         for line in file:
             typ, val = line.split("\t")
             val = str(val).strip("\n")
@@ -116,8 +116,8 @@ def processPartQ4():
     list2 = list()
     list3 = list()
     list4 = list()
-    out = open("output-Q4", "w")
-    with open("part-r-00000-Q4", "r") as file:
+    out = open("Outputs/output-Q4", "w")
+    with open("Parts/part-r-00000-Q4", "r") as file:
         for line in file:
             typ, val = line.split("\t")
             val = str(val).strip("\n")
@@ -153,8 +153,8 @@ def processPartQ5():
     list2 = list()
     list3 = list()
     list4 = list()
-    out = open("output-Q5", "w")
-    with open("part-r-00000-Q5", "r") as file:
+    out = open("Outputs/output-Q5", "w")
+    with open("Parts/part-r-00000-Q5", "r") as file:
         for line in file:
             typ, val = line.split("\t")
             val = str(val).strip("\t \n")
