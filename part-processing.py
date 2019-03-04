@@ -5,10 +5,10 @@ import random
 from random import randrange
 
 def main():
-    processPartQ1()
-    processPartQ2()
-    processPartQ3()
-    processPartQ4()
+    #processPartQ1()
+    #processPartQ2()
+    #processPartQ3()
+    #processPartQ4()
     processPartQ5()
 
 def processPartQ1():
@@ -165,7 +165,12 @@ def processPartQ5():
             rand_ind = randrange(len(list1))
             list3.append(list1[rand_ind])
             list4.append(list2[rand_ind])
-
+        maxi = max(list2)
+        mini = min(list2)
+        indexMax = list2.index(max(list2))
+        indexMin = list2.index(min(list2))
+        print("Max " + list1[indexMax] + " " + str(maxi))
+        print("Min " + list1[indexMin] + " " + str(mini))
         plt.bar(list3, list4)
         plt.xticks(range(20), list3, rotation='65')
         plt.margins(0.05)
